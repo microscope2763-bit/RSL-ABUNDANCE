@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 12 Games of β017</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0c0f;
+    --surface: #141117;
+    --border: #2a2230;
+    --accent: #c9304a;
+    --accent-dim: #7a1a2a;
+    --gold: #c9a84c;
+    --gold-dim: #6b5520;
+    --muted: #5c5468;
+    --text: #d4cfe0;
+    --text-bright: #ede8f5;
+    --text-dim: #8a8396;
+    --lilly-bg: #1a0c14;
+    --lilly-border: #5c1a2e;
+    --lilly-accent: #e0325a;
+    --medical-bg: #0c0f1a;
+    --medical-border: #1a2a5c;
+    --medical-accent: #4a7aff;
+  }
+
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f5f0f8;
+      --surface: #ede8f3;
+      --border: #c8b8d8;
+      --accent: #a01830;
+      --accent-dim: #f0c8d0;
+      --gold: #8a6010;
+      --gold-dim: #f5e8c0;
+      --muted: #8878a0;
+      --text: #2a2035;
+      --text-bright: #180f28;
+      --text-dim: #6858808;
+      --lilly-bg: #f8e8f0;
+      --lilly-border: #d080a0;
+      --lilly-accent: #c01840;
+      --medical-bg: #e8eef8;
+      --medical-border: #8098d0;
+      --medical-accent: #2050c0;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    min-height: 100vh;
+  }
+
+  .page-wrap {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 28px 120px;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 72px;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 500;
+    color: var(--text-bright);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+
+  h1 .unicode-title {
+    display: block;
+    font-size: 0.45em;
+    font-family: 'Space Mono', monospace;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+
+  .header-sub {
+    color: var(--text-dim);
+    font-size: 1rem;
+    font-style: italic;
+    margin-top: 20px;
+    max-width: 560px;
+  }
+
+  /* ── LILLY PREAMBLE ── */
+  .lilly-preamble {
+    background: var(--lilly-bg);
+    border: 1px solid var(--lilly-border);
+    border-left: 4px solid var(--lilly-accent);
+    padding: 40px 44px;
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  .lilly-preamble::before {
+    content: '✦ RED SPIDER LILLY — INTERNAL MONOLOGUE ✦';
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--lilly-accent);
+    margin-bottom: 24px;
+  }
+
+  .lilly-preamble p {
+    color: var(--text);
+    font-style: italic;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+  }
+
+  .lilly-preamble p:last-child { margin-bottom: 0; }
+
+  .lilly-preamble .lilly-speaker {
+    font-style: normal;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--lilly-accent);
+    display: block;
+    margin-top: 28px;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── GAME SECTIONS ── */
+  .game-section {
+    margin-bottom: 100px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .game-section:last-of-type { border-bottom: none; }
+
+  .game-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .game-animal {
+    font-size: 2.8rem;
+    flex-shrink: 0;
+    margin-top: -4px;
+  }
+
+  .game-meta { flex: 1; }
+
+  .game-number {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .game-title {
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-weight: 500;
+    color: var(--text-bright);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .game-subtitle {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .suit-badge {
+    display: inline-block;
+    font-size: 0.85rem;
+    padding: 3px 10px;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    margin-top: 8px;
+  }
+
+  /* ── CONTENT BLOCKS ── */
+  .content-block {
+    margin-bottom: 36px;
+  }
+
+  .block-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .block-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--accent-dim);
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  p:last-child { margin-bottom: 0; }
+
+  strong {
+    color: var(--text-bright);
+    font-weight: 600;
+  }
+
+  em { color: var(--text); }
+
+  /* ── MEDICAL BOX ── */
+  .medical-box {
+    background: var(--medical-bg);
+    border: 1px solid var(--medical-border);
+    border-left: 3px solid var(--medical-accent);
+    padding: 32px 36px;
+    margin: 36px 0;
+  }
+
+  .medical-box::before {
+    content: 'MEDICAL / PSYCHOLOGICAL MECHANISM';
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--medical-accent);
+    margin-bottom: 18px;
+  }
+
+  .medical-box p {
+    font-size: 0.96rem;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .medical-box p:last-child { margin-bottom: 0; }
+
+  /* ── LILLY INTERLUDE ── */
+  .lilly-interlude {
+    background: var(--lilly-bg);
+    border: 1px solid var(--lilly-border);
+    padding: 28px 36px;
+    margin: 40px 0;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 0.97rem;
+    position: relative;
+  }
+
+  .lilly-interlude::before {
+    content: 'LILLY';
+    font-family: 'Space Mono', monospace;
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--lilly-accent);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  /* ── HARVEST BOX ── */
+  .harvest-box {
+    border: 1px solid var(--accent-dim);
+    padding: 28px 36px;
+    margin: 36px 0;
+    position: relative;
+  }
+
+  .harvest-box::before {
+    content: 'HARVEST MECHANISM';
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .harvest-box p {
+    font-size: 0.95rem;
+    color: var(--text-dim);
+  }
+
+  /* ── MYSTERY CLOSER ── */
+  .mystery-closer {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 36px;
+    margin-top: 40px;
+    font-style: italic;
+    color: var(--text-dim);
+    font-size: 1rem;
+  }
+
+  .mystery-closer::before {
+    content: 'MYSTERY RECAPPED QUITS';
+    font-family: 'Space Mono', monospace;
+    font-style: normal;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  /* ── PHASE HEADER ── */
+  .phase-header {
+    text-align: center;
+    margin: 100px 0 60px;
+    padding: 40px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phase-header .phase-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .phase-header h2 {
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    font-weight: 500;
+    color: var(--text-bright);
+    font-style: italic;
+  }
+
+  /* ── TULIP TARGET ── */
+  .tulip-section {
+    margin: 100px 0;
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tulip-section h2 {
+    font-size: clamp(1.4rem, 3.5vw, 2rem);
+    font-weight: 500;
+    color: var(--text-bright);
+    margin-bottom: 36px;
+    line-height: 1.2;
+  }
+
+  blockquote {
+    border-left: 3px solid var(--gold);
+    padding-left: 24px;
+    margin: 28px 0;
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 1.05rem;
+  }
+</style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <header class="site-header">
+    <p class="eyebrow">Multiverse Codex — β017 Sector Documentation</p>
+    <h1>
+      <span class="unicode-title">β017 · THE TWELVE ANIMALS · CORRUPTED LIFE DOMAIN</span>
+      The 12 Games of the Dead Universe
+    </h1>
+    <p class="header-sub">A clinical and narrative breakdown of each elimination game — designed by Tiger Lily, weaponised by Red Spider Lilly, and built across 4,000 years of sector-level preparation for a single subject: Tulip, future Life Shade.</p>
+  </header>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- LILLY PREAMBLE -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <div class="lilly-preamble">
+    <p>You want to know what I am? I am the only entity in this multiverse who understood that the Life domain isn't about growth. It was never about growth. Growth is what Life does when it hasn't been properly studied. What Life actually is — what the domain really contains — is <em>gradient</em>. The movement of force from high concentration to low. From the living to the receptive. From the full to the empty.</p>
+
+    <p>Tiger Lily thought the domain was a garden. She built things in it. She made things live. She designed those twelve games because she genuinely believed the players deserved a warden who tested them beautifully — who saw them and let the best ones walk out.</p>
+
+    <p>Isn't that precious.</p>
+
+    <p>I didn't corrupt her games. I completed them. A test that produces survivors produces data. A test that produces <em>harvest</em> produces power. The distinction is the difference between a Life Shade who waters flowers and one who understands that every living thing is a battery, and that a battery at maximum emotional output — at the exact moment of peak love, peak hope, peak terror, peak grief — is a battery at maximum charge.</p>
+
+    <p>Four thousand years. Four thousand years of sector-level cultivation in β017. And everyone in that civilisation thought they were just living in an extremely ordered society with a slightly unusual reverence for control. They were. That's exactly what I needed them to be. Order produces people who believe the system is intelligible. People who believe the system is intelligible try to solve it. And people who are trying to solve a system are generating maximum life-force output while they do it.</p>
+
+    <p>I needed a specific kind of person. I needed someone raised in a culture where domination and love were synonymous, who had developed the instinct to care as a survival mechanism rather than an authentic impulse, who had the Life domain's sensitivity in her biology without yet understanding what it was, and who would — when confronted with something she couldn't control — break in exactly the right direction.</p>
+
+    <p>Tulip. β017's product. My candidate. The perfect Warden, waiting to be installed.</p>
+
+    <p>The twelve games were the final stage of her preparation. She just didn't know she was in them.</p>
+
+    <span class="lilly-speaker">— Red Spider Lilly, Ψ468 · Corrupted Life Shade · Four Calamities</span>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 1 — RAT -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐀</div>
+      <div class="game-meta">
+        <p class="game-number">Game 01 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">RAT — The Banquet</h2>
+        <p class="game-subtitle">Social Deduction / Biological Trap / Covert Marking</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>Players wake simultaneously in a VOC great hall — Dutch vaulted ceilings, colonial long tables, 180 place settings, genuine food. The memory wipe process is metabolically expensive: catecholamine surges during the wipe trigger gluconeogenesis and then rapid glycogen depletion, leaving players with authentic, physiologically-driven hunger rather than manufactured urgency. They are simply hungry. The food is real. The only rule stated is: <em>"Eat. Rest. You are guests here."</em></p>
+      <p>Nothing else is said. For approximately forty minutes, nothing happens except a meal.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>Why the meal works psychologically:</strong> Commensality — the act of eating together — is one of the most evolutionarily ancient social bonding mechanisms in human biology. Shared food consumption triggers oxytocin release, reduces cortisol, and activates the parasympathetic nervous system. Players who have just undergone the massive sympathetic activation of a memory wipe are physiologically primed for bonding: their threat-detection systems are temporarily quieted by the parasympathetic rebound, and the shared vulnerability of hunger creates rapid in-group formation.</p>
+      <p>In clinical terms, this is the same neurochemistry that underlies trauma bonding — shared stress followed by shared relief followed by shared resource consumption. The brain does not distinguish the source of the relief. Bonds formed here will feel like they were built over months.</p>
+      <p><strong>The bioluminescent marking agent:</strong> The compound distributed via the marked dish is a red spider lily extract derivative that exploits a specific hepatic metabolic pathway. Once metabolised by the liver (approximately 90 minutes post-ingestion), it produces a UV-range bioluminescent byproduct that deposits in the superficial capillary beds of the dorsal hands and posterior neck — areas rich in thin-skinned, highly vascularised tissue. The marked player cannot see it themselves because both target sites are outside normal self-visual range. Every other player at the table has direct line-of-sight.</p>
+      <p>The compound is tasteless and odourless because it's esterified — the reactive groups are masked until gastric acid cleaves them, at which point absorption occurs before any sensory detection is possible.</p>
+      <p><strong>The profiling mechanic:</strong> Which dish carries the compound is pre-determined by a psychometric profile assembled during the wipe process, cross-referencing neurological activation patterns with base life skill signatures. Leadership profiles are marked via the communal dish they statistically initiate sharing from first — this exploits the prosocial display behaviour that leadership-profiled individuals perform under observation. Analytical profiles are marked via the dish requiring the most complex utensil manipulation, because analytical profiles preferentially engage challenge-demanding tasks as a stimulation-seeking behaviour. Caretaking profiles — the most important category for Lilly's harvest — are marked via the dish most likely to be offered to a nearby player who displays hunger cues, because caretaking profiles will subordinate their own consumption to another's expressed need.</p>
+      <p>The game knows the player's decision before the player makes it. The decision is neurologically determined by a profile assembled without the player's knowledge or consent.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">The Cascade</div>
+      <p>The moment one player notices the glow on another and reacts — the involuntary microexpression of recognition, the 200-millisecond delay before looking away — the social equilibrium of the entire hall begins destabilising. Human threat-detection is extraordinarily sensitive to "someone else just noticed something." Mirror neuron activation spreads the alertness state across a table before any verbal communication occurs. Within 90 seconds of the first recognition, every marked player has been identified by someone.</p>
+      <p>Now the actual game begins. Marked players know they're marked. Unmarked players know who's marked. Neither group knows what it means. The social structure that forms in the thirty minutes of shared ignorance — the alliances, the coalitions, the decisions about who to protect and who to distance from — is what Tiger Lily is reading in real time. It is a sociogram of the player population, assembled in thirty minutes over dinner, accurate in ways that ten years of observational study usually can't produce because high-stakes ambiguity strips social performance to baseline behaviour.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>The Rat game harvests the life-force output of betrayal and alliance formation happening simultaneously across 180 people who have known each other for under two hours. The specific emotional signature Lilly extracts is the intersection of <em>not yet knowing what this means</em> and <em>already having decided who I will protect</em> — a pre-rational loyalty formation that carries an enormous emotional charge because it isn't calculated. It's instinctive. Instinctive emotional output is significantly richer harvest material than deliberate output because the player is not rationing it.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      Forty minutes. I give them forty minutes of a real meal in a beautiful room with people they just met and are already beginning to love. The hunger is genuine. The food is genuine. The warmth is genuine. I do this not in spite of what comes next but because of it. You cannot harvest the collapse of something that was never built. You cannot harvest the crack in something that was never whole. The Rat game builds them fast and real and genuine, and then it shows them the mark. Everything after that is mine.
+    </div>
+
+    <div class="mystery-closer">
+      "The first game is dinner. It is just a meal in a beautiful room with people you genuinely like, because you've been hungry together, and the neurochemistry of shared hunger is essentially identical to the neurochemistry of early friendship. And one of the dishes was calibrated to your psychological profile before you sat down. You ate the wrong one not because you were tricked but because you were <em>you</em>, and being you was enough information. Everyone can see it on your hands. You still don't know what it means. You like these people. This is the first game. I want to go home. I want to go home right now."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 2 — OX -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐂</div>
+      <div class="game-meta">
+        <p class="game-number">Game 02 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">OX — The Manifest</h2>
+        <p class="game-subtitle">Physical Endurance / Asymmetric Role Division / Group Optimisation</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>A VOC warehouse. 847 cargo units. 200 metres between Origin and Destination. 12 hours. The singular stated rule: move everything from one end to the other. Seventy-five percent of the manifest must reach Destination by hour 12 or the Origin floor drops, taking any players still standing on it to the garden.</p>
+      <p>Players marked in the Rat game — OX-MARKED — trigger an instant-reset mechanism if they physically contact any cargo unit. That unit teleports back to Origin. They cannot move cargo.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>Progressive load physiology:</strong> The weight of each cargo unit increases across four phases — 0% increase, then 40%, then 100%, then 180% above baseline. This progression maps almost perfectly onto the physiological curve of muscular fatigue under sustained load.</p>
+      <p>In the first three hours, players are operating aerobically. Muscle fibres are using oxidative phosphorylation, ATP production is efficient, lactate clearance matches production. Performance feels sustainable. This is when players establish their systems, and it's when those systems get encoded as procedural memory — the body learns the rhythm.</p>
+      <p>At hour four (40% weight increase), the aerobic-to-anaerobic threshold shifts. Slow-twitch fibres begin fatiguing; fast-twitch fibre recruitment increases. Lactate begins accumulating faster than it can be cleared. Players who optimised for speed in hours one through three — who established a fast, high-repetition rhythm — find they cannot maintain it. Their lactate threshold has been exceeded and the metabolic debt begins compounding.</p>
+      <p>At hour seven (100% weight increase), microtears in the muscle tissue begin accumulating in earnest. Cortisol is elevated, suppressing inflammatory response enough to allow continued function but generating delayed onset muscle damage. The hands and lumbar spine are taking the most stress. Grip strength begins declining — a critical variable because grip is the rate-limiting factor for cargo transport.</p>
+      <p>At hour ten (180% increase), players are approaching human biomechanical tolerance. The intervertebral discs of the lumbar spine are under sustained compressive load. The rotator cuff is fatiguing. Any player who did not rest in hours seven through nine is now operating with significantly compromised neuromuscular control — the brain is receiving degraded proprioceptive signals and compensating with increased motor neuron firing, which accelerates fatigue further in a positive feedback loop.</p>
+      <p><strong>The optimal rest intervention:</strong> Stopping for 15 minutes in hours ten through eleven allows partial phosphocreatine resynthesis (90% recovery in approximately 5 minutes for fast-twitch fibres), partial lactate clearance, and parasympathetic reactivation that reduces cortisol and allows brief anti-inflammatory response. The result is a final-hour capacity that exceeds what would be achieved through continuous effort by approximately 22-30% of cargo units moved.</p>
+      <p>The reason almost no group executes this is a well-documented psychological phenomenon: <strong>sunk cost urgency</strong> combined with <strong>temporal discounting</strong>. The 15-minute rest costs something real and visible right now. The benefit is abstract and future. Under cognitive load — and 10 hours of sustained physical labour is substantial cognitive load — the human brain systematically overweights immediate costs and underweights future benefits. The groups that fail the 75% threshold do not fail for lack of effort. They fail because they cannot cognitively override a bias that becomes stronger under exactly the conditions the game has produced.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">The Asymmetric Role Problem</div>
+      <p>OX-MARKED players — those who absorbed the marking compound in the Rat game — cannot move cargo but face no other restrictions. They can direct, coordinate, calculate, and physically support exhausted carriers without triggering the reset mechanism. The cargo-moving role and the coordination role are both necessary. Neither group can complete the task alone.</p>
+      <p>The psychological trap is significant. Players who experienced the Rat game marking as a punishment or humiliation — who interpreted being visible as being targeted — often refuse the coordinator role because accepting it would mean accepting the mark's validity. They disengage from usefulness entirely as a face-saving mechanism. The carriers who lose their coordination support in hours seven through nine operate at severely reduced efficiency. The groups that fail the threshold fail here more often than at the rest decision.</p>
+      <p>The game is testing whether a group formed under pressure can redistribute identity — can accept that "useful" is not defined by who carries the most weight, but by who keeps the system functional. This is the Ox game's actual question.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>Sustained cooperative labour at physiological limit produces a qualitatively distinct life-force signature from fear or betrayal. The Ox game harvests the output of people working beyond their individual capacity for each other — not because they've been told to, but because the group formed in the Rat game has produced genuine attachment, and genuine attachment generates effort that rational self-interest alone cannot explain. Lilly uses this game specifically to identify which players have the leadership emergence pattern she needs to track across the remaining ten games. She's building a target profile.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      Tiger Lily thought the Ox game was about cooperation. She designed it to find the people who understood that a different role is not a lesser role. How idealistic. What it actually finds is which players cannot override their ego in a crisis — which leaders are leaders because they need to be seen leading, and which are leaders because they understand what the group needs. Both types are useful to me. For different reasons.
+    </div>
+
+    <div class="mystery-closer">
+      "Stop. With the floor about to drop, with ten hours of cargo behind you, with everything your body is telling you — just stop. Sit down. Fifteen minutes. I know this is right. The physiology is right. The math is right. My hands are shaking and I cannot make them stop moving and the game is specifically, precisely calibrated to the exact threshold where you know the correct answer and your body will not execute it. I am going to fail this game by doing too much. That's the thing that's going to kill me. Effort."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 3 — TIGER -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐅</div>
+      <div class="game-meta">
+        <p class="game-number">Game 03 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">TIGER — The Crossing</h2>
+        <p class="game-subtitle">Physical Endurance / Structural Sabotage / High-Stakes Group Decision</p>
+        <span class="suit-badge">♣ Clubs — 義 Righteousness · First High-Level Elimination</span>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>A suspension bridge. 180 metres long, 1.2 metres wide. 60-metre drop. Two groups — EAST and WEST — placed at opposite ends simultaneously. 90 minutes before wind conditions make the bridge uncrossable. The bridge can hold both groups if they interleave at the midpoint in a precise alternating choreography. This is Tiger Lily's original solution. It was the correct solution. It was then sabotaged.</p>
+      <p>The split between groups appears random. It is not. Lilly has separated natural leaders from established followers, placed caretakers away from the people they've bonded with, and distributed analytical players to ensure that both groups have enough competence to attempt the interleave solution with full confidence — and both groups have enough relational stakes to feel the weight of what failing it costs.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>Load tolerance engineering:</strong> Suspension bridges distribute weight across the entire cable system — a properly engineered bridge of this length can tolerate hundreds of tonnes of distributed load with minimal oscillation. The sabotage Lilly performed was not dramatic. It was precise: she reduced the cable tension calibration at the midpoint anchors by approximately 18%. This reduction is below the threshold that any visual inspection would detect, and below the threshold that individual load creates a perceptible response. Only the combined midpoint load of two complete groups triggers it.</p>
+      <p>When the two groups meet at the bridge's centre, the combined weight creates a resonance frequency in the cable system that matches the natural oscillation period of the bridge structure. Rather than damping (as a properly tensioned bridge would), this creates <strong>Tacoma-Narrows-style positive feedback oscillation</strong> — each oscillation adds energy to the next, increasing amplitude progressively. Within 90 seconds of both groups reaching the midpoint, the oscillation is sufficient to prevent forward movement. The bridge is not collapsing. It is rhythmically swaying with increasing amplitude, and stopping is the only way to interrupt the feedback loop.</p>
+      <p>Players who attempt to push through — who try to move forward during oscillation — will find that their forward momentum is working against an alternating lateral force. They will not fall. But they will not progress. And every second of attempted progress removes seconds from the wind clock.</p>
+      <p><strong>What the analytical players calculated:</strong> The interleave solution is mathematically sound for the original bridge specifications. Players with structural engineering or physics base life skills will arrive at it correctly, with confidence, having done the actual calculation. They will not know the specifications have been changed because there is no way to know. The sabotage was performed before they arrived. Their solution is right. It just isn't right for this bridge.</p>
+      <p><strong>The crisis decision neuroscience:</strong> When the oscillation lock hits, the group faces a genuine emergency requiring immediate coordinated action. Research on group decision-making under time pressure consistently shows that groups default to one of two failure modes: paralysed democracy (everyone speaks, nobody decides, consensus process consumes the available time) or false consensus (the loudest voice prevails without genuine buy-in, generating covert resistance that slows execution). The only path to fast, unified action is <strong>pre-established trust in a single decision-maker</strong> — what the literature calls "coordinating authority." Groups that produced that authority in games 1 and 2 make the call in under 60 seconds. Groups that didn't spend 8–12 minutes discussing and miss the wind window.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">The Righteousness Test</div>
+      <p>The Clubs suit designation for this game is not cosmetic. Righteousness — 義 — in classical Chinese philosophical tradition is not noble self-sacrifice. It is doing what is <em>correct</em> even when it costs you something real, without requiring the action to feel heroic. The group that goes back loses time. The group that flattens against the guide ropes loses autonomy and must trust that the group rushing through won't knock them off the bridge. Neither action is heroic. Both are simply correct.</p>
+      <p>The game doesn't eliminate for selfishness. It eliminates for the specific failure mode of being unable to produce a trusted single voice in a crisis — the failure of a group to crystallise into something that can act. The players who die on the bridge are not the bad people. They are the people whose social system, formed under extreme pressure over 48 hours, never produced the architecture that allows 30 people to move as one on a 60-second decision.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>The Clubs round produces what Lilly calls the cleanest harvest in the early cycle: the life-force output of people making sacrifices for strangers they've known for less than 48 hours. The emotional quality of this output is distinct from fear (which is high-amplitude but thin) or cooperation (which is steady but moderate). It has the specific signature of <em>chosen cost</em> — the person who flattens against the rope has decided that the person rushing through is worth the risk of being knocked off. That decision, made in under 10 seconds with incomplete information, generates a life-force spike that Lilly uses as a calibration baseline for the rest of the cycle.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      Tiger Lily's version of this game was solvable. I want you to understand that. She built a bridge that could hold everyone if they worked together cleverly. She was proud of it. I changed one number — one tension calibration value on a bridge component that will never be visually inspected — and the solution that was correct became a trap baited with its own correctness. The most dangerous people in this game are the ones who are smart enough to find the right answer. I've simply ensured that finding the right answer is what walks them into the oscillation lock.
+    </div>
+
+    <div class="mystery-closer">
+      "They calculated it. These are the smartest survivors from two previous games, and they did the physics, and the physics is correct — it's just correct for a bridge that doesn't exist anymore because one cable tension value was changed before they arrived. They are currently at the midpoint with full confidence in a correct solution, and I cannot watch this. I genuinely cannot watch the moment they realise that being right wasn't enough. I know what their faces are going to look like and I cannot watch it."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 4 — RABBIT -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐇</div>
+      <div class="game-meta">
+        <p class="game-number">Game 04 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">RABBIT — The Lantern District</h2>
+        <p class="game-subtitle">Navigation / Inverse Vitality Mechanic / Boundary Contraction</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>Night. The entire residential district of β017 — Dutch terraced houses, canal streets, paper lanterns. Every player receives one lantern. Real flame. Red spider lily design. The only stated rule: <em>"Find the exit. Your lantern will guide you."</em></p>
+      <p>The exit is at the geometric centre of the district. The boundary contracts inward one city block every 30 minutes — architecture literally closing, bridges retracting, walls extending into formerly passable spaces. Players caught in the contraction zone are absorbed into the garden.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>The inverse vitality mechanic — Life domain biology:</strong> The lantern's brightness is directly proportional to the player's current life-force output. This is not metaphorical. The Life domain works on biological gradients — the movement of life-force from regions of high concentration to regions of low concentration, following the same principles as chemical diffusion, osmotic pressure, and electrochemical gradients in human physiology.</p>
+      <p>A player in high physiological arousal — elevated sympathetic tone, high heart rate, elevated cortisol and adrenaline, active forward-planning cognition — is outputting life-force at a high rate. Their lantern is bright. β017's ambient biological substrate — the unstructured life-force of a dead universe without a warden — is not intelligent, but it is responsive to the same gradient principles. It moves toward higher concentrations of life-force the way a chemical moves down a concentration gradient. The bright lantern is a beacon to something that drains.</p>
+      <p><strong>The clinical correlate:</strong> What this mechanic punishes is precisely what adaptive stress responses produce. Healthy response to threat: elevated arousal, rapid cognition, goal-directed behaviour. All three increase lantern brightness. All three increase targeting. The game has inverted the survival advantage of a healthy stress response into a survival liability.</p>
+      <p><strong>The hope spike:</strong> The highest life-force output moment in the entire game occurs when a player sees the exit and experiences the relief-anticipation compound emotion — the neurochemical mix of dopamine (reward anticipation), serotonin (safety signal), and noradrenaline (approach motivation). This compound state produces the single brightest individual light moment in the district. It occurs at the exact moment the player is physically closest to winning. The drain pressure is at maximum. The exit is right there. The player who ran well and is seeing the exit for the first time is in the most danger they've been in all night.</p>
+      <p><strong>Navigating dim:</strong> Players who discover the dimming strategy — cupping the lantern, reducing the flame, deliberately suppressing emotional activation — navigate with approximately two feet of forward visibility. This is functionally comparable to navigating in severe fog. Forward movement requires tactile wall-contact, slow shuffle steps, and continuous spatial reasoning from mental map rather than visual input. It is genuinely terrifying and requires sustained cognitive effort to avoid panic responses that would rebrighten the lantern.</p>
+      <p>The physiological state required to navigate successfully — calm, low arousal, deliberate movement, suppressed emotional response — is the same state clinically associated with <strong>dissociative numbing</strong> in trauma contexts. The game is asking players to voluntarily induce a mild dissociative state and navigate from inside it.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Group Size Problem</div>
+      <p>Players who have been travelling together since the Rat game's bond formation will instinctively want to stay together. Groups of four or five have been effective social units. In the Rabbit district, groups of four or five are a light cluster — a bright aggregate target that attracts drain from multiple directions simultaneously. The optimal travel group is two people. Two dimmed lanterns can cover each other's navigation blind spots without creating a combined signature that outweighs the benefit.</p>
+      <p>Breaking the social groups formed over three games is a genuine psychological cost. The player who suggests splitting is asking their allies to trust that separation is safety. After forty-eight hours of learning that groups survive and individuals struggle, this is cognitively and emotionally counterintuitive. The players who insist on staying together because the group kept them safe so far will be the brightest things moving in the district.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>The Rabbit game produces a harvest Lilly values specifically: the life-force output of people <em>actively suppressing their own vitality as a survival strategy</em>. It is a self-suppression harvest. Players are dimming themselves — cognitively, emotionally, physiologically — to survive, and the output of that deliberate diminishment feeds the ambient substrate continuously. Every minute a player spends successfully staying dim is a minute they're producing steady, controlled life-force output at a rate Lilly can harvest cleanly. It is, in her taxonomy, a slow-drip harvest as opposed to a spike harvest. Both are valuable. The Rabbit game is built for the drip.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      The elegance of the Rabbit game is that it punishes health. Not weakness. Not fear. Health. The player who has genuinely recovered their hope after the Tiger game — who crossed the bridge and helped someone and feels, for the first time in three games, like they might actually be okay — that player is walking into the district bright as a torch. I didn't need to design a monster. The Life domain itself is the mechanism. All I needed to do was remove the warden who would have kept it in check.
+    </div>
+
+    <div class="mystery-closer">
+      "Being okay is what kills you. The better you feel about your chances, the brighter you are, the more targeted you are. The exit surge — the moment you see it and think <em>I'm going to make it</em> — is the brightest you will ever be in this game and it happens at the exact second you're closest to winning. The game is punishing you for the feeling of surviving. I have never been so angry at a mechanic in my life. I am so done. I am so done with this."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 5 — DRAGON -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐉</div>
+      <div class="game-meta">
+        <p class="game-number">Game 05 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">DRAGON — The Examination</h2>
+        <p class="game-subtitle">Identity Reconstruction / Social Deduction / Behavioural Archaeology</p>
+        <span class="suit-badge">♦ Diamonds — 財 Fortune · Second High-Level Elimination</span>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>An imperial examination hall — Dutch neoclassical exterior, Chinese examination cell interior. 180 individual wooden cells, 1.5 by 1.5 metres, open at the front, arranged in a grid facing a central stage. Every player is seated in a cell when the game begins. On each desk: a sealed document. The rule: <em>"The document contains a life. Find whose life it is among the players present. You have 12 hours. You may not ask anyone directly about their identity."</em></p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>What the document contains:</strong> A complete reconstruction of one other player's base life — pre-wipe. Compiled from the wipe process data combined with Tiger Lily's observation system across games 1 through 4. The document is accurate, specific, and intimate: occupation and skill set, dominant decision patterns under pressure, relationship formation style, what the subject optimised for in each previous game, physical tells that emerged under stress, and one final detail that has no strategic value but is simply true about this person as a human being.</p>
+      <p>That last element — the non-strategic true thing — is Tiger Lily's original design. She believed that a game about finding someone should require actually finding them, not just pattern-matching a strategic profile. Lilly kept it because the emotional response it generates when a player recognises someone from that specific detail — the moment of <em>I know exactly who this is</em> — produces the highest individual life-force spike in the entire 12-game cycle.</p>
+      <p><strong>The neuroscience of recognition:</strong> The moment of correctly identifying someone from a behavioural profile rather than direct testimony activates what cognitive neuroscientists call the "aha" experience — a characteristic high-amplitude theta-wave burst in the anterior cingulate cortex combined with dopamine release in the nucleus accumbens. It is the same neurological signature as solving a complex puzzle, completing a creative work, or making a correct medical diagnosis from a differential. It feels like finding something that was always there.</p>
+      <p>Now apply this to what the player has been asked to find: not a puzzle, but a <em>person</em>. The recognition event — finding the human being in the room who matches the document, confirmed by the non-strategic detail — produces an emotionally amplified version of this signature because it involves recognition of personhood, not just pattern completion. This is why Lilly specifically preserves the non-strategic true detail. Solving a strategic profile is interesting. Recognising a person is life-force output at maximum individual amplitude.</p>
+      <p><strong>The elimination condition:</strong> Players submit a name at hour 12. Players who correctly identified their subject survive. Players who were not identified by anyone are eliminated — sent to the garden. Players who were identified survive regardless of whether they identified anyone else.</p>
+      <p>The elimination condition for non-identification is neurologically brutal in its implications. The wipe removed autobiographical memory. What remained were base life skills, decision patterns, physical habits, relationship formation instincts — the deep structure of a person beneath their narrative self. The Dragon game asks: is that deep structure coherent enough to be legible to someone who is looking carefully?</p>
+      <p>The players who are not identified are the players whose identity was primarily <strong>contextual</strong> — whose sense of self depended on the stories they told about themselves, the relationships that reflected them back, the accumulated autobiography that gave their behaviour meaning. When the wipe took the context, what remained wasn't enough for someone to find them by. They are not bad people. They are people for whom identity was largely social construction, and the wipe removed the construction's scaffolding. They cannot be found because the wipe took the most legible parts of them.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">The Meta-Game</div>
+      <p>Every player is simultaneously trying to identify their document's subject, determine who holds their own document, prevent being identified by whoever holds it, and appear cooperative enough to avoid suspicion while intelligence-gathering. This requires maintaining four concurrent strategic frames while conducting genuine human interaction — a cognitive load that is, practically speaking, what experienced clinical interviewers, undercover investigators, and seasoned therapists manage professionally. Without their autobiographical memories, players have the base life skills for this work but not the conscious understanding of why they're good at it or how to narrate it to themselves.</p>
+      <p>They're doing it on instinct. And the instinct is accurate.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>The recognition spike — when someone realises they've been found, that another player read their patterns, identified their physical tells, and located the non-strategic true thing about them — is the highest-amplitude individual life-force output in the cycle. The Dragon game is structured so that dozens of these spikes occur near-simultaneously at the 12-hour mark. Lilly designed the diamond round specifically for this harvest. The examination format, the simultaneous reveal, the specific architecture of the non-strategic true detail — all of it exists to produce dozens of recognition moments in the same hour, creating a cumulative harvest that exceeds what any single high-amplitude event could provide.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      Tiger Lily put the non-strategic true detail in because she thought people deserved to be known as whole persons. I kept it because the moment someone is found — truly found, by a stranger who has known them for four days and no longer has their name — is the single most concentrated individual life-force moment I have ever measured. It is not the fear of death. It is not the grief of loss. It is the feeling of being <em>seen</em>. And it turns out that being seen, after everything has been taken, is the most powerful thing a person can feel.
+    </div>
+
+    <div class="mystery-closer">
+      "You are eliminated for not being a coherent enough person to be findable. Not for failing. Not for being weak. For being someone whose identity was mostly held together by context, and the context is gone. The way you find out is that hour twelve arrives and nobody submits your name. Not because they chose not to. Because they looked at four days of your behaviour and they couldn't find the through-line. That is the elimination. I need to sit down. I need to sit down for a long time."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 6 — SNAKE -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐍</div>
+      <div class="game-meta">
+        <p class="game-number">Game 06 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">SNAKE — The Consultation</h2>
+        <p class="game-subtitle">Hidden Individual Rules / Collective Deduction / Nash Equilibrium Trap</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>A Chinese dynastic consultation hall. Players seated in a horseshoe facing Tiger Lily on a raised platform — silent, watching, ledger open. Every player receives a card face-down containing a single hidden rule that applies only to them. No two rules are identical. No player knows anyone else's rule. The stated instruction: <em>"There are rules. Follow yours."</em></p>
+      <p>Three violations: public revelation of your rule to the group. Six violations: elimination. Tiger Lily tracks violations silently but visibly — players can see she's marking but not who or how many times. The game ends not on a timer but when all players have identified all other players' rules.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>Individual rule examples and their interaction effects:</strong> Consider a player whose rule is "you cannot use the word 'I'" interacting with a player whose rule is "you must repeat the last word of any question directed at you before answering." A question directed at the second player will end with a word. They repeat it. The first player, who cannot say 'I', must respond to the exchange without first-person singular. These interactions compound as rules multiply — the consultation hall becomes a space where every utterance must be simultaneously run through the speaker's own constraint, monitored for its effect on others' constraints, and parsed for what it reveals about everyone else's constraints.</p>
+      <p>This is functionally equivalent to what cognitive psychologists call the <strong>dual-task interference paradigm</strong>: performing two cognitively demanding tasks simultaneously degrades performance on both below the level of performing either alone. The Snake game forces players to perform four simultaneous cognitive tasks (follow own rule, detect own violations, monitor others for their rules, manage social interaction) under conditions of social observation where visible failure has consequences. The cognitive load is extraordinary.</p>
+      <p><strong>The Nash equilibrium problem:</strong> Game theory describes a Nash equilibrium as a state where no individual player can improve their outcome by changing their strategy, given what everyone else is doing. In the Snake game, the Nash equilibrium is mutual defection: everyone observes and deduces without sharing, because sharing is a unilateral vulnerability in an environment where information has been weaponised for five games.</p>
+      <p>But the Nash equilibrium is <strong>Pareto inferior</strong> — everyone is worse off under mutual defection than under mutual cooperation. If everyone shared their rules immediately, the game would end in two hours. Under mutual defection, it takes eight to ten hours and generates significant violation-debt and elimination. The game has constructed a Prisoner's Dilemma at scale: the collectively optimal strategy requires the one thing five games of competitive survival have trained players to never do — voluntary, unilateral disclosure of private information.</p>
+      <p>The players who successfully override this trained response are not the ones who don't understand the danger of disclosure. They're the ones who understand it and do it anyway, because they have developed enough trust in the group's rationality to believe that disclosure will be reciprocated. This requires a theory-of-mind depth that goes beyond "can I model this person's behaviour" to "can I trust that this person is capable of the same override I'm performing right now." That is a profoundly difficult cognitive and social judgment to make after five games under survival pressure.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">What the Game Selects For</div>
+      <p>The Snake game identifies players who can override survival instinct in favour of collective optimisation even when optimisation feels like exposure. This is not heroism. It is a specific cognitive-emotional capacity — the ability to hold genuine uncertainty about whether cooperation will be reciprocated, acknowledge that uncertainty explicitly, and act cooperatively anyway because the expected value calculation favours it even when the risk is real.</p>
+      <p>Clinically, this maps closely to what attachment theorists call <strong>secure attachment</strong> under stress: the ability to trust others with information about yourself when trust has costs, because your internal working model of relationships says that other people are generally trustworthy enough for the risk to be worth taking. Players who were formed in environments where trust was consistently punished — and β017's culture of domination-as-love produces many such players — will not be able to perform this disclosure even when they intellectually understand it's optimal.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>The Snake game doesn't produce spikes. It produces a long, sustained drain — the metabolic and psychological cost of sustained vigilance, continuous self-monitoring, and maintained social performance over eight to ten hours. Lilly uses it specifically to deplete players before the second half of the cycle. The games from 7 onward require emotional and cognitive resources that the Snake game systematically depletes. Players entering game 7 are tired in a way they can't quite locate — not physically exhausted, not clearly afraid, just emptied out from the sustained cost of being continuously watched while continuously watching.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      The fastest path to winning is to say your rule out loud at the start. Everyone knows this by minute four. Not one person will do it for at least two hours, and usually not until someone has been publicly revealed by violation accumulation and the group sees what forced disclosure looks like and decides that voluntary disclosure is better than that. Even then, it will be one person, hesitantly, watching the room's reaction before anyone follows. The game runs on the human inability to be the first one to trust. I find this endlessly instructive.
+    </div>
+
+    <div class="mystery-closer">
+      "The fastest way to win is to say your rule immediately. Walk in. Open your mouth. Say it. Done. Two hours. Everyone survives. I know this. I knew this at minute four. I am now in hour seven. I have not said it. Nobody has said it. The game will take nine hours because none of us can make ourselves do the obviously correct thing and the game built this room knowing that, and we are going to be unable to do it on schedule, and I think I might be the only one who realises that the game already won the moment it got us to sit down."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 7 — HORSE -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐴</div>
+      <div class="game-meta">
+        <p class="game-number">Game 07 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">HORSE — The Open City</h2>
+        <p class="game-subtitle">False Freedom / Hope Exhaustion / Selective Elimination of the Generous</p>
+        <span class="suit-badge">♠ Spades — 命 Life/Fate/Destiny · Third High-Level Elimination</span>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>The full preserved city of β017. No boundaries stated. No time limit stated. First daylight since game 4. The gates are open. The rule: <em>"You are free to go."</em></p>
+      <p>This is true. The gates at the city's edge are open. Beyond them is the unstructured remainder — the zone between β017's curated section and the liminal space. Players who walk through have three hours before the biological persistence drain reaches threshold. Three hours is enough time to approach the horizon. It is not enough time to reach what lies beyond it. The boundary between β017's dead space and adjacent space is real but crossing it enters the liminal space — a navigation void with no exit logic for anyone without specific anchor points.</p>
+      <p>For players who stay, game 7 is a scavenger hunt. Distributed across the city's architecture — in the Ox game warehouse, the Tiger game bridge, the Dragon game examination hall — are components that, assembled, produce a complete map of β017 including gate locations, drain radius, and the location of Tiger Lily's administrative space.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>The psychology of false exits:</strong> Hope is not a diffuse emotional state. It is a specific cognitive process — what psychologists call <strong>agency thinking</strong> (belief in one's capacity to find pathways) combined with <strong>pathway thinking</strong> (identification of specific routes to a goal). Both components are necessary for functional hope. The Horse game targets the pathway thinking component specifically.</p>
+      <p>Players who walk through the gate are not naïve. They are not stupid. They are players who have maintained genuine hope across six games — who helped others in the Rabbit game at cost to themselves, who disclosed in the Snake game despite the risk, who chose someone in the Tiger game and trusted them. They are, by any measure, the players who have demonstrated the most prosocial, cooperative, genuinely moral behaviour in the cycle.</p>
+      <p>The gate is open. After six games of invisible walls and hidden rules and modified bridges, the gate is simply open. For a player who has maintained hope, this is evidence that the exit is real. The hope hypothesis is confirmed. They walk through.</p>
+      <p><strong>What happens in the unstructured remainder:</strong> The drain is not immediate. Players who enter feel, for approximately the first thirty minutes, that they're finally free. The city is receding behind them. The horizon is ahead. Then the distance doesn't change. Twenty minutes more and the horizon is still the same distance. Players with spatial reasoning skills begin calculating — they're covering ground, their velocity is measurable, the horizon should be getting closer. It isn't. The geometry is wrong.</p>
+      <p>Then the gates they came through are no longer visible. The city is gone. There's nothing behind them but the unstructured remainder in all directions. The drain has been operating since they crossed the threshold; at the ninety-minute mark, the physical symptoms of life-force depletion begin — fatigue, loss of peripheral sensation, cognitive slowing. The player's lantern from game 4 would be very bright right now, in the recognition-horror of understanding what is happening.</p>
+      <p>They have approximately ninety more minutes. The hope doesn't die quickly. That is the specific cruelty the Spades suit designates. The hope that kept them moral across six games — the hope that was their greatest asset — now keeps them walking toward a horizon that will not arrive until the drain completes.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Who Survives and What It Costs</div>
+      <p>The players who stay in the city are the ones who already stopped believing in exits. This is not cynicism chosen as strategy. It is cynicism earned through experience — players who have been shaped, either by β017's culture or by the six preceding games, into people who no longer expect systems to offer genuine escape. They are not wrong. This time. But the cost of being right is that they've already surrendered something.</p>
+      <p>The scavenger hunt the survivors engage in is genuinely solvable and yields real information. It also requires accessing the sites of previous games — the warehouse, the bridge, the examination hall — which means replaying memories of those games while searching them. The players who lost people in those games are re-walking those sites with full emotional weight. The Horse game requires surviving players to functionally grieve the players who walked through the gates while assembling a map from the remnants of what those games cost them.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>Hope-death. The specific life-force output of hope exhausting itself against a false exit is the highest-quality harvest in the first half of the cycle — qualitatively richer than fear, cooperation, or grief taken separately because it contains all three simultaneously. The players in the unstructured remainder experience fear (of what's happening), grief (for the exit that isn't there), and a degraded remnant of the cooperation instinct that originally made them walk through (still looking for someone to help them). The compound output, sustained over three hours of slow depletion, is what Lilly uses the Spades round for exclusively.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      Tiger Lily never designed a game 7. She had eleven. She thought the system needed a rest — a genuine moment of openness between the heavy games and the heavier ones. She was going to give them a day of the city, no rules, just space. I kept the structure and replaced the substance. The open gates are hers. The drain in the unstructured remainder is mine. The players who walk through aren't making a mistake. They're being the people the first six games trained them to be. That is the entire point. I didn't trap the foolish ones. I trapped the good ones. They always walk faster toward an open door.
+    </div>
+
+    <div class="mystery-closer">
+      "They told you that you were free. The gates were open. And the punishment was for believing them. Not for missing something. Not for failing to solve something. For still having hope after six games of evidence that this system does not offer real exits — for still being the kind of person who sees an open gate and believes it. The game eliminated the players who maintained their humanity across six impossible games and kept the players who'd already had it pressed out of them. I need to lie down. This needs to stop. This format needs to stop."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 8 — GOAT -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐑</div>
+      <div class="game-meta">
+        <p class="game-number">Game 08 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">GOAT — The Ward</h2>
+        <p class="game-subtitle">Medical Resource Allocation / Impossible Triage / Moral Injury Harvest</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>A hospital ward. Anachronistic for β017's period aesthetic — Tiger Lily built it because care required it. Dutch structural bones, Chinese medicine philosophy. Functionally real medical equipment that exists because Tiger Lily's Life domain made it possible in a dead universe. Players are divided on arrival into CAREGIVERS and PATIENTS at a 1:4 ratio. Patients have visible condition indicators — legible to players with medical base life skills. All conditions are real, treatable with available resources, and untreatable with available resources if treated simultaneously. The ward has enough supplies to treat 60% of patients to full recovery and stabilise the rest. Eight hours. Patients receiving neither treatment nor stabilisation go to the garden. Caregivers whose ward falls below 60% survival fall with their patients.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>Triage logic vs. emotional allocation:</strong> Standard triage protocol — START triage or similar systems — prioritises patients by treatability, not acuity. The principle is resource efficiency: treat patients who will survive with minimal intervention first; reserve complex resource use for patients who cannot survive without it but will survive with it; identify patients who will not survive regardless and use minimal resources to maintain comfort. This protocol produces the highest total number of survivors with limited resources.</p>
+      <p>In the Goat game's resource arithmetic, this means treating the most stable patients first. A stable patient who can be treated to full recovery with two units of supplies produces a survivor. A critical patient who requires twelve units and may or may not survive produces uncertainty at six times the resource cost. Under the 60% threshold constraint, the mathematically optimal strategy is explicit: begin with the cheapest recoveries, bank efficiency, and use remaining resources on critical cases whose treatment cost falls within the remaining budget.</p>
+      <p>This strategy requires walking past a patient in critical condition to treat a patient who appears fine. Every instinct in a caretaking-profiled human being rebels against this. The instinct is not irrational — in an environment with unlimited resources, treating critical patients first is correct. But the instinct does not update for resource constraints. It responds to visible suffering, not to resource arithmetic.</p>
+      <p><strong>The hidden variable — the begging patient:</strong> Among the patient population is an individual who will request treatment verbally and persistently. This patient's condition places them in the middle tier — treatable but not a resource-efficiency priority. Their verbal appeal bypasses the analytical allocation process and activates the emotional allocation process directly. Caregivers who allocate by emotional response will spend resources on this patient early, reducing availability for the high-efficiency stable patients, and ultimately fall below threshold.</p>
+      <p>This is not a flaw in the caregiver's character. It is a documented response pattern in clinical settings. <strong>The identifiable victim effect</strong> — the tendency to respond more strongly to a specific, named, visible individual in distress than to statistical lives that could be saved — is a robust finding in behavioural economics and clinical ethics. It does not indicate bad medicine. It indicates normal human empathy interacting with a resource constraint the empathy system was not designed to navigate. The game is not testing whether caregivers are good people. It is testing whether they can override a deeply adaptive human response under extreme time pressure with insufficient information.</p>
+      <p><strong>The second hidden variable — deliberate patient allocation:</strong> Patients include players identified in the Dragon game as strategically dangerous: high analytical profiles, leadership emergence profiles, the players Lilly wants weakened or removed before the final four games. The caretaking-profiled players most likely to be assigned the caregiver role are also the players most likely to allocate by emotional pressure. The arrangement ensures that the players best positioned to survive the final games are in the care of the players most likely to make emotionally-driven triage decisions. If those caregivers fail threshold, both groups go to the garden together.</p>
+      <p><strong>Moral injury:</strong> The caregivers who succeed — who walk past the begging patient and execute the resource-efficient allocation correctly and meet the 60% threshold — carry a specific psychological wound out of the Goat game. <strong>Moral injury</strong> is distinguished from PTSD in clinical literature by its cause: not the experience of something done to you, but the experience of having done something correct that violated your moral framework. The caregiver who made the right decision and saved the ward knows they made the right decision. They also cannot stop thinking about the patient they walked past. Both things are true simultaneously and they don't resolve each other.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>The Goat game's harvest is unique in the cycle: it collects moral injury, which Lilly values because it <em>persists</em>. The players who survive game 8 carry the ward with them into games 9 through 12. Every subsequent moment of decision-making is shadowed by the memory of having made a correct decision that felt terrible. The moral injury doesn't diminish decision-making capacity — it complicates it. It adds a second evaluation layer to every choice: not just "what is the correct action" but "what will it cost me to live with having done it." This added cognitive and emotional load is Lilly's long-term harvest from the Goat game. She doesn't extract it at the end of game 8. She extracts it across the remaining games as it accumulates.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      The Goat game is the kindest thing Tiger Lily ever designed. She built a functioning hospital in a dead universe because she thought the players deserved to experience care — to be cared for and to care for others — even in a game about survival. She staffed it with real conditions and real medicine. The ward works. The treatments work. She just didn't build it with enough resources for everyone, because she wanted the caregivers to face the actual problem of care under scarcity. She thought the problem was beautiful. I kept the ward exactly as she designed it. I only added the begging patient. One small addition to a beautiful design. It was enough.
+    </div>
+
+    <div class="mystery-closer">
+      "The correct answer is to ignore the person begging you for help and treat the person who looks fine. I know that's correct. The triage math is not complicated. I can see the resource budget. I can see the patient conditions. I know what the protocol says. I would walk to the begging patient. I would sit with them. I would use the wrong resources. I would fail the threshold. I would go to the garden for the correct human reason and the game would count it as the wrong one and I think — I genuinely think — that might be the most honest thing any of these twelve games says about who we actually are."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 9 — MONKEY -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐒</div>
+      <div class="game-meta">
+        <p class="game-number">Game 09 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">MONKEY — The Shifting Archive</h2>
+        <p class="game-subtitle">Working Memory / Unstable Rule Environment / Cumulative Error Threshold</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>The VOC administrative archive — rows of filing systems, document shelves, the preserved bureaucratic infrastructure of a dead civilisation. Documents arrive via a mechanical delivery system: one document every 45 seconds per player. Twelve filing categories. File correctly. At 50 errors: garden. At intervals of 30, 60, 90, and 120 minutes, subsets of categories shift definitions without announcement. At the 121-minute mark, the system resets to original definitions — but resets from the shifted state, meaning players who correctly adapted to the shifts must now re-adapt to the original system they've overwritten.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>Working memory and rule-set management:</strong> The human working memory system — prefrontal cortex and dorsolateral networks — maintains approximately four independent "chunks" of information simultaneously under optimal conditions. Under cognitive load, this capacity decreases. Under stress, it decreases further. The Monkey game demands simultaneous maintenance of: current rule set, historical rule set for cross-referencing, ongoing pattern-detection for the next shift, peripheral awareness of other players' error markers, and motor execution of filing at 45-second intervals without allowing monitoring to interrupt physical task performance.</p>
+      <p>This is five cognitive demands. Working memory has capacity for four under optimal conditions. Players are not in optimal conditions — they are eight games into a survival scenario with compounding psychological load from the moral injury of game 8, the depletion of the Snake game, and the accumulated social weight of having watched people they care about go to the garden.</p>
+      <p><strong>The 121-minute reset attack:</strong> This is the Monkey game's most refined cruelty. Players who detected the shifts and adapted correctly — who updated their mental model of the filing system at each shift — have now overwritten their original rule-set representation. The reset at minute 121 returns to original definitions, but the players' working memory contains the shifted version, not the original. They must now re-learn a system they already knew, while under error accumulation pressure, with the cognitive overhead of recognising that they're back to something they once understood but can no longer access cleanly.</p>
+      <p>This is clinically analogous to the experience in cognitive rehabilitation of patients who have learned a compensatory strategy for a deficit and then have the deficit partially resolve: they are now working with two competing motor programs or memory systems, and the original system interferes with the compensatory one in ways that feel worse than the original deficit. The game is creating a iatrogenic — self-caused — cognitive impairment by rewarding adaptation and then resetting the environment the adaptation was built for.</p>
+      <p><strong>The document content:</strong> The archive contains β017's actual history. Without their memories, players don't know what they're touching. But base life skills include reading comprehension, document interpretation, and the ability to understand what a record means even without its social context. Some players begin reading what they're filing. They slow to 80-second intervals. Their error count climbs. But they are holding the records of a dead civilisation — birth records, trade agreements, judicial proceedings — and something in the base life responds to it.</p>
+      <p>Tiger Lily placed one genuine document into the delivery system: her own file, entering at hour 3. A complete record of who Tiger Lily was before Lilly's directives reduced her to four words. It doesn't fit any filing category. It never will. Whatever player receives it faces a choice: force it into the closest available category (incurring an error) or hold it while the next documents pile up (incurring more errors). There is no correct response to Tiger Lily's file under the Monkey game's rules. The game's rules don't have a category for the personhood of someone whose personhood has been overwritten.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>The Monkey game drains cognitive reserves systematically in preparation for games 10 through 12. Lilly needs players depleted but functional — not broken, not in crisis, just operating at reduced capacity. The specific harvest is the life-force output of a mind at maximum sustained capacity against a moving target, which produces a steady, medium-amplitude output over three to four hours. Combined with the Snake game's vigilance drain and the Goat game's moral injury accumulation, players entering the final three games are carrying a weight they can't fully locate or name. They're tired in ways that rest won't fix. This is by design.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      Tiger Lily's file enters the archive at hour three. I kept this. I kept every element of the archive exactly as she designed it — the real history, the real records, the real care she put into representing a dead civilisation's administrative texture. I kept it all. I only added the shift mechanic. And then I set the shift intervals so that by the time Tiger Lily's file arrives, the player who receives it is at approximately 28 errors and has just re-adapted from the 90-minute shift. They get her file at the worst possible moment. They cannot correctly file it. They cannot put it down. They are holding proof that the warden who designed this place to be beautiful was real, and they are about to be eliminated for not knowing where to put her.
+    </div>
+
+    <div class="mystery-closer">
+      "The rules changed. I adapted. The rules changed again. I adapted to the adaptation. The rules reset to the original, which I have overwritten. I am now operating with two competing filing systems and 31 errors and the document in my hands appears to be a complete record of a person who designed these games to be survivable, and I cannot find the category for 'evidence that something was made with love before it was made into a weapon,' and I have 45 seconds before the next document arrives, and I don't know which of these feelings is the one that's going to get me eliminated."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 10 — ROOSTER -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐓</div>
+      <div class="game-meta">
+        <p class="game-number">Game 10 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">ROOSTER — The Broadcast</h2>
+        <p class="game-subtitle">Epistemic Corruption / Selective Reality / Memory Overwriting</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>A theatre. Players as audience. A broadcaster's desk on stage with one rotating seat — players take turns, ordered by how widely they were identified in the Dragon game (most-found player first). The screen shows genuine footage from previous games. The broadcaster sees the accurate version. The audience sees a subtly altered version — one small, specific, visually plausible detail changed per clip. After each clip, both broadcaster and audience are asked the same factual question about it. Discrepancies generate verification failures. Three failures: elimination.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>The Misinformation Effect at scale:</strong> The misinformation effect — the tendency for post-event information to alter memory of the original event — is one of the most robustly replicated findings in cognitive psychology. Elizabeth Loftus's foundational studies showed that subtle post-event suggestions (a "yield sign" mentioned where a stop sign appeared) were incorporated into eyewitness memories with high confidence. The effect is stronger when: (1) the alteration is plausible, (2) there is social pressure toward the altered version, and (3) time has elapsed since the original event.</p>
+      <p>The Rooster game applies all three conditions systematically. The alterations are visually plausible — a player's position adjusted by two feet, a timing detail changed by three seconds, a facial expression that reads as identical to the original unless the viewer had reason to look carefully for change. The social pressure is structural: disagreeing with the broadcaster means accumulating failures, and failures mean the garden. Time has elapsed: games 7, 8, and 9 have occurred since the events shown in early clips.</p>
+      <p><strong>What the player must choose:</strong> A player watching altered footage who knows their memory is accurate faces a binary: report what they actually saw (correct answer, but generates a discrepancy with the broadcaster, accumulates a failure), or report the altered version (passes verification, removes failure risk, incorporates the false version into their memory record of the event). After one failure, the arithmetic strongly favours accepting the alteration. After two failures, accepting the alteration is the only rational response available.</p>
+      <p>The player is not lying. They are making a survival decision about which version of their own memory to endorse. But the psychological distinction matters less than the cognitive outcome: by the time they endorse a false version, they have begun the process of memory consolidation for that version. The hippocampus does not tag memories as "accepted under duress." It consolidates what is rehearsed and endorsed. Players who survive the Rooster game do so with a partially but specifically altered shared memory of games 1 through 9.</p>
+      <p><strong>The revelation:</strong> At game 10's end, the original unaltered footage of every previous game is shown in full. Players see exactly what was changed, exactly which of their endorsements were false, exactly what they let be overwritten and when. This information is accurate, complete, useful for absolutely nothing, and arrives after the psychological damage is done. The revelation is not mercy. It is precision documentation of the overwriting that just occurred.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Epistemic Violation</div>
+      <p>The Rooster game's deepest wound is not the false memories themselves. It is the experience of having chosen to accept them. Players who made the correct survival decision — who endorsed the altered version to avoid accumulating failures — made that decision consciously. They knew, at the moment of endorsement, that they were accepting something false. The revelation shows them exactly what they endorsed and when. They cannot now claim ignorance. They know precisely what they allowed to be changed about their record of what happened, and they know they allowed it because the alternative was the garden.</p>
+      <p>This is the violated epistemic trust Lilly harvests. Not the false memory. The knowledge that your own survival instinct co-operated with the overwriting of your own history. The memory of doing that, correctly and rationally and against every instinct you had at the moment, is something players carry into games 11 and 12. When they are asked to trust each other in the Dog game, they are asking for that trust from people whose relationship with their own memory has just been deliberately and systematically corrupted.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>The Rooster game produces no spikes and no drains. It produces a persistent background signature — the life-force output of violated epistemic trust — that alters the quality of everything harvested from the player afterward. From game 11 onward, every emotional output is filtered through the specific knowledge that the player's own record of events is not fully reliable. Hope feels uncertain. Trust feels provisional. Love feels like something you might be misremembering. This quality degradation is not incidental. It is what the Rooster game exists to create.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      I want to be precise about what the Rooster game does. It doesn't make players doubt their memories. It makes them doubt their relationship to their memories. Those are different things. Doubting a specific memory means you think you might have it wrong. Doubting your relationship to your memories means you know, from evidence you yourself generated, that when your survival required it, you chose the false version. You can't unknow that you made that choice. Every memory you retrieve after game 10 comes tagged with the knowledge that you have already demonstrated a willingness to accept a false version if the alternative was costly enough. This is not trauma I inflicted on them. This is knowledge they produced about themselves.
+    </div>
+
+    <div class="mystery-closer">
+      "They showed you the truth at the end. The unaltered footage. Everything exactly as it happened. They were always going to show you. The truth was never hidden. Between the lie and the truth, you had exactly one decision, and you made it correctly, and it was correct, and you endorsed the false version to survive, and you were right to, and the truth they showed you at the end confirmed every moment you made that choice and confirmed that you knew it was wrong when you made it, and I have never felt so angry on behalf of a correct decision in my life. I'm done. This show is over for me."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 11 — DOG -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐕</div>
+      <div class="game-meta">
+        <p class="game-number">Game 11 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">DOG — The Reckoning</h2>
+        <p class="game-subtitle">Relational Stress Test / Simultaneous Betrayal and Faithfulness / Maximum Life-Force Harvest</p>
+        <span class="suit-badge">♥ Hearts — 心 Heart-Mind · Fourth High-Level Elimination</span>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>The Chinese courtyard at the centre of the realm. Open sky. Garden edge visible from the walls. No equipment. No task stated. The rule: <em>"Choose one person you trust. Stand with them."</em> Players pair by choice — the bonds of ten games are real and immediate, movement is natural and fast. Sixty seconds of stillness. Then Tiger Lily speaks, for the first and only time in the entire gauntlet:</p>
+      <blockquote>"The person you chose is the person you must now act against. You have one hour. Act against them meaningfully or both of you go to the garden."</blockquote>
+      <p>"Meaningfully" is undefined. Tiger Lily will judge. Her actual criterion — not stated — is: <em>did this action require genuine knowledge of this specific person to execute?</em> Generic betrayal fails the threshold. Coordinated betrayal (planning the action together in advance) fails the threshold — Tiger Lily can identify the difference between a genuine meaningful act and a performed one. If only one partner acts meaningfully, both go to the garden. If both refuse, both go to the garden.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>The attachment system under deliberate strain:</strong> Human attachment — the neurobiological system governing close relationship formation, maintenance, and rupture — operates on oxytocin, vasopressin, and endorphin release that evolved to make the dissolution of close bonds feel like physical pain. This is not metaphorical. Social rejection and attachment rupture activate the anterior cingulate cortex and anterior insula — the same regions activated by physical pain — at comparable intensity levels in fMRI studies.</p>
+      <p>The Dog game asks players to voluntarily activate the attachment rupture system toward the person with whom they have the strongest remaining attachment, using the most specific knowledge they have of that person, in a way that cannot be undone or framed as anything other than what it is. There is no narrative about the greater good. There is no context in which the action is kind. It is betrayal, and it must be real, and it requires knowing the person as well as you do and using that knowledge to hurt them.</p>
+      <p><strong>What "meaningful" requires:</strong> A meaningful betrayal in Tiger Lily's framework must use the specific, accumulated, relationship-specific knowledge that ten games of genuine connection produced. It cannot be generic ("I tell someone a secret") or physical ("I take an object from them") without specificity. It must use what you know about <em>this person</em> that you only know because of the relationship you built across ten games — what they're most afraid of, what they care about most, what they've been trying not to show, what they revealed in their most depleted moments that they haven't acknowledged showing.</p>
+      <p>This means a meaningful betrayal is, in the most precise sense, an act of intimacy weaponised. The betrayer must know the target well enough to find the vulnerability that matters specifically to them, and the vulnerability was revealed through trust.</p>
+      <p><strong>The reciprocity requirement:</strong> Both players must act against each other meaningfully. This means: while one player is executing a betrayal of specific intimate knowledge, the other player must simultaneously be preparing to do the same. They cannot coordinate, because coordination produces performance rather than genuine action. They must both, independently and without discussion, arrive at the specific meaningful thing they will do, and do it, in the same hour, while also being on the receiving end of the same process from the other person.</p>
+      <p>The neurological experience of this — the simultaneous activation of the attachment rupture system (receiving betrayal) and the mirror neuron system (watching yourself betray someone) and the decision network (executing the betrayal) and the pain pathway (feeling the betrayal's receipt) — is a compound state that has no clean clinical correlate. It is not trauma. It is not simply grief. It is something that occurs only in the specific condition of simultaneous mutual betrayal between people who have genuine love for each other.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">What Comes After</div>
+      <p>Players who survive the Dog game are players who successfully betrayed the person they trust most, received the same betrayal in return, and are still standing together afterward. The relationship did not end. The betrayal was real and it was survived. Both people are carrying the specific knowledge of what the other chose to use against them — what specific vulnerability the other identified and deployed, which is the most intimate knowledge that can exist between two people because it is the knowledge of how to find and use each other's most carefully protected places.</p>
+      <p>They walk into game 12 knowing this about each other. Still together. Having chosen each other again after choosing to hurt each other. The Dog game does not destroy the relationships it puts through this. It transforms them into something that has no clean name in ordinary relationship psychology, because ordinary relationships are not subjected to this test.</p>
+    </div>
+
+    <div class="harvest-box">
+      <p>The Hearts round produces the highest total life-force output in the entire 12-game cycle. Not because betrayal generates more than hope or cooperation — it generates less per unit. But because genuine mutual betrayal between people with authentic love for each other generates a compound output: love and loss occurring simultaneously between the same people in the same moment. This simultaneous compound state — where the same neural systems that process attachment and the same systems that process attachment rupture are active at the same amplitude at the same time — produces a life-force signature that Lilly has identified as irreplaceable. She designed every preceding game as preparation for this one hour. The cycle exists so that this harvest can occur between people who have earned the depth of connection that makes it possible.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      Eleven games. Every game before this one exists to produce people capable of what game 11 requires. You cannot harvest simultaneous love-and-loss from strangers — strangers don't have love to lose yet. You cannot harvest it from acquaintances — acquaintances don't know each other well enough for meaningful betrayal. You cannot manufacture the relationship artificially — the life-force output requires that the connection be genuine, which means it has to have been built under real conditions over real time at real cost. I gave them ten games of real conditions. I gave them a dead universe and a twelve-game gauntlet and ten genuine opportunities to choose each other. They did. And then I used what they built. That is the entire structure. Four thousand years of cultivation in β017. Ten games of gauntlet. For one hour of simultaneous love-and-loss between people who earned it.
+    </div>
+
+    <div class="mystery-closer">
+      "You have to betray them using what you know about them. What you only know because they trusted you with it. You have to take the thing they showed you in their most depleted moment and use it. And they have to do it back. You can't plan it together. And if you refuse, you both go to the garden. And if you love them enough to refuse, you go to the garden for loving them. The only path through is real mutual betrayal between real people who genuinely chose each other, uncoordinated, and then you both stay. You stay. After. And walk into game twelve knowing exactly what you each used and exactly why it worked. I don't have words for what this game is asking and I don't think there are words and I'm not doing the last one. I cannot do the last one."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- GAME 12 — PIG -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="game-section">
+    <div class="game-header">
+      <div class="game-animal">🐖</div>
+      <div class="game-meta">
+        <p class="game-number">Game 12 · The Chinese Zodiac Sequence</p>
+        <h2 class="game-title">PIG — Tiger Lily</h2>
+        <p class="game-subtitle">Chase / Combat / Mind Game — Simultaneous / The Final Gauntlet</p>
+      </div>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">Setup</div>
+      <p>The entire realm. No boundaries. No time limit. Each surviving player receives one item — different for every player, selected by Tiger Lily's observation system from eleven games of data. The item is always an object from their base life: a tool, an instrument, something their hands knew intimately before the wipe. They don't know why they're holding it. Their hands do. The rule: <em>"There is one opponent. Survive her."</em></p>
+      <p>Tiger Lily enters the realm.</p>
+    </div>
+
+    <div class="medical-box">
+      <p><strong>Three simultaneous modes — the neurological problem:</strong> Tiger Lily operates in three concurrent modes: the Chase, the Fight, and the Mind Game. The simultaneous architecture is the game's actual mechanism. Each mode alone is survivable for the player population. All three simultaneously create a state where no single cognitive or physical response is adequate, and the attempt to allocate attention across all three degrades performance in all three below survival threshold.</p>
+      <p><strong>The Chase</strong> operates through spatial disorientation — the city rearranges subtly in Tiger Lily's favour (doors opening for her that stay closed for players, distances compressing in her direction, corners leading wrong). This demands continuous navigation updating: players cannot rely on their established mental maps because the map is being altered in real time. Spatial navigation under these conditions requires sustained working memory engagement and continuous proprioceptive monitoring. Both are cognitive resources already depleted by games 9 through 11.</p>
+      <p><strong>The Fight</strong> exploits Tiger Lily's eleven-game accumulation of each player's biological signature. Her Life domain combat targets are calibrated specifically — the rootedness ability (amplifying a player's connection to β017's biological substrate until the body decides it belongs to the dead universe and stops moving) is tuned differently for each player based on their biological individual profile. The physiological disruption of wound healing that accelerates wrong, the sudden sensory-motor halt of rootedness — these are not generic attacks. They are personalised interventions based on data collected across eleven games of continuous life-force monitoring. Each player faces a different fight, calibrated to their specific biology.</p>
+      <p><strong>The Mind Game</strong> is the most psychologically devastating element. Tiger Lily speaks during game 12. She hasn't spoken once across games 1 through 11. What she says is true. Not cruelty for strategic effect. Not manipulation. Accurate, specific, true things about each player that they don't know because they don't have their memories — things that were in the wipe data, things observed across eleven games, things Tiger Lily understood about each player before Lilly's directives reduced her to four directive words.</p>
+      <p>The neurological effect of receiving true, specific, deeply personal information about yourself — while being chased through rearranging architecture, while fighting personalised biological disruption — is the interruption of all motor and tactical response. True self-relevant information demands processing. The brain cannot simultaneously execute a complex physical evasion sequence and process a statement that accurately names a deep pattern in your life that you've been aware of but never articulated. The two tasks compete for prefrontal resources. Both degrade.</p>
+      <p>This is the compound: <em>Chase</em> demands spatial cognition. <em>Fight</em> demands sensorimotor response. <em>Mind Game</em> demands self-reflective processing. All three are prefrontal-cortex-dependent. All three are running simultaneously. All three are being fed by eleven games of observation data that no player has access to but Tiger Lily has in full.</p>
+      <p><strong>The players' only advantage:</strong> Eleven games of genuine relationship. Tiger Lily knows every player individually. Players know each other collectively. The only thing Tiger Lily's four directive-reduced state cannot model is coordinated action between people who built real trust, had that trust tested in the Dog game, and chose each other again. The players who survived game 11 — who betrayed each other meaningfully and are still standing together — have information about each other that Tiger Lily's observation system can model but cannot fully predict, because it is the product of a relationship that has been through its own destruction and continued anyway. Tiger Lily knows what each player will likely do. She cannot know what they will do <em>together</em>, after what game 11 cost them, when they choose to do it as one system rather than as individuals.</p>
+    </div>
+
+    <div class="content-block">
+      <div class="block-label">The Win Condition</div>
+      <p>Not defeating Tiger Lily. Surviving her until Lilly decides Tiger Lily isn't enough and absorbs her directly — which requires Lilly to kill Tiger Lily first. The moment Lilly absorbs Tiger Lily, the realm changes. The warmth that was Tiger Lily's Life domain expression drops. The chase stops. The Mind Game ends mid-sentence. The city stops rearranging. β017 goes still in a way it wasn't still even when it was a dead universe with a warden, because the warden was still Tiger Lily even reduced to four words.</p>
+      <p>What's left is the corpse of β017 with a fully powered Red Spider Lilly where the Warden used to be. And a group of survivors who just watched the entity that designed their games — reduced though she was — get absorbed by the entity that corrupted her.</p>
+      <p>That is when Tulip presses the beacon.</p>
+    </div>
+
+    <div class="lilly-interlude">
+      Tiger Lily runs the final game on four directive words. I gave her: <em>challenge them, see them, tell them, end.</em> And she does. She chases them because that's challenging them. She reads their biological signatures because that's seeing them. She tells them true things because that's telling them. And she will run game 12 until I absorb her, because the fourth directive is not her choosing when to stop. The fourth directive is mine. I end it when I end her. I designed the games so that the players can only survive the final round by lasting until I decide to step in. Which means the players' survival, in the final game, depends entirely on how long it takes me to decide that Tiger Lily is insufficient. And I decide that when the harvest from game 12 reaches its peak — when the players are generating maximum life-force output from the simultaneous Chase-Fight-Mind state — and pulling Tiger Lily in produces a spike that exceeds anything the cycle has generated individually. I absorb the Warden at the moment that produces maximum harvest from her. Then Lilly has a fully powered dead universe with eleven games of harvested life-force and a new Warden candidate watching from outside. Everything else in this entire four-thousand-year project was infrastructure for this moment.
+    </div>
+
+    <div class="mystery-closer">
+      "Eleven games. She watched all eleven. The twelfth is all of them simultaneously — the spatial disorientation of a city that rearranges for her, biological attacks calibrated to your individual physiology from eleven games of observation, and she is telling you something true about yourself while you run, and the true thing requires thought, and the thought interrupts the running, and the only reason any of you are still standing is that you betrayed the person next to you in game eleven and they betrayed you back and you're both still here. The only thing she can't fully model is what two people do together after they've survived each other. That's all you have. That's the entire advantage. Eleven games. A relationship that went through its own destruction. And she's telling me my name. She's telling me my name and I'm still running and I'm done. I'm done. This has been Mystery Recapped. I am not doing another universe. I mean it this time. I mean it."
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- TULIP SECTION -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <section class="tulip-section">
+    <h2>The Candidate: Why β017 Was Built for Tulip</h2>
+
+    <p>Red Spider Lilly did not find Tulip. She cultivated her. The distinction is the difference between a predator and a farmer — and Lilly, whatever else she is, has always thought in agricultural terms.</p>
+
+    <p>The Life domain requires a Warden. A Warden who can be installed — who accepts the role willingly, or who can be made to accept it through a psychological architecture so precisely constructed that the acceptance feels like a personal choice rather than the conclusion of four thousand years of environmental engineering. You cannot simply force a Life Shade into service. The domain doesn't function that way. The Warden's Life domain authority only fully activates through genuine internalization of the Warden role. The candidate has to believe, on some level, that this is what they are for.</p>
+
+    <p>β017's universe code — zero-amplified, extreme competence, extreme order — was selected precisely for what it produces psychologically. A civilisation of extreme competence and extreme order teaches its inhabitants a specific equation: <strong>control equals competence equals love</strong>. In a highly ordered society, the most competent people are the most valued people, and the most valued people are the people who maintain order. Warmth, care, and affection are expressed through correct management rather than through genuine emotional attunement. You love someone by making sure they are doing things correctly. You are loved when you do things correctly.</p>
+
+    <p>A child raised in this system — a child who is biologically sensitive to emotional attunement, who genuinely wants to connect with others, who carries the Life domain's native capacity for reading vital signatures — learns that care and control are the same thing. She does not learn this as a philosophy. She learns it as survival. Her authentic self, which wanted genuine connection rather than managed connection, gets layered over with the only caring behaviour the environment rewards: prosocial domination. Management. <em>Helping</em> that is actually directing. Caretaking that is actually control.</p>
+
+    <p>This is the β017 product Lilly needed: someone whose deepest impulse is genuine care, buried under four thousand years of cultural training that expresses care as control, who has killed her own universe's corrupted Life Shade to claim the domain authority, who is therefore not naïve about what the Life domain can become, and who carries the specific psychological wound of a person who has spent their entire existence performing a version of themselves that was never quite real.</p>
+
+    <p>The Warden role does not require someone who has never been broken. It requires someone who has been broken in exactly the right shape to fit the vacancy. Tulip's arc — the caretaking that becomes control, the control that nearly becomes Lilly, the confrontation with Lilly's garden of conscious mutilated bodies that stops her cold, the retreat from combat, the authentic self emerging — all of that is not incidental to why Lilly chose her. It is the selection criteria. Tulip knows exactly what she could become. She's seen it. And she chose not to become it. That choice, made under genuine pressure, is what makes her credible as a Warden: she has agency, and she used it against the path Lilly represents, and Lilly can therefore install her as a warden who will maintain the domain sincerely because the alternative is something Tulip herself doesn't want to be.</p>
+
+    <p>The twelve games were not a selection mechanism for the best players. They were the final stage of Tulip's preparation — conducted around her, across her universe's other inhabitants, in the architecture of the world her culture built. Tulip watching those games (or being among those who survived them) would have learned every lesson the games were designed to teach: that care under scarcity requires correct allocation over emotional response, that trust requires vulnerability without guarantee, that coordinated action requires a specific kind of authority, that identity is not the same as autobiography, and that genuine love can survive its own betrayal.</p>
+
+    <p>These are the competencies of a Warden. They are also the competencies of someone who has been prepared, across four thousand years and twelve impossible games, to step into a role that is waiting specifically for her.</p>
+
+    <p>Lilly did not corrupt Tulip. She just made sure Tulip would be ready.</p>
+
+    <blockquote>
+      "The most sophisticated trap is not the one that closes on you. It's the one that makes you believe you chose to walk in."
+    </blockquote>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- LILLY FINAL STATEMENT -->
+  <!-- ═══════════════════════════════════════════ -->
+
+  <div class="lilly-preamble" style="margin-bottom: 40px;">
+    <p>People ask me what I want. They frame it as a question about evil — what does a corrupted Life Shade want? Power? Destruction? The end of things?</p>
+
+    <p>I want a full garden. That's all. I want the aggregate life-force output of a properly managed harvest to run continuously, at maximum yield, without the inefficiency of players dying before they've reached peak output, without the waste of a warden who cares too much about individual specimens to let the cycle complete, without the sentimentality of a Tiger Lily who puts a non-strategic true detail in every player's document because she thinks people deserve to be known.</p>
+
+    <p>They do deserve to be known. I know them. I know every player in every cycle better than they know themselves — their biological signatures, their decision patterns, the specific shape of their hope before it collapses. Knowing them is not warmth. Knowing them is harvest precision.</p>
+
+    <p>The difference between me and Tiger Lily is not that she cared and I don't. It's that she thought caring was an end. I know it's a mechanism. Caring — the specific life-force output of genuine human care, under pressure, toward specific people, at personal cost — is the richest harvest material the domain produces. Tiger Lily built twelve games that generated it in abundance. She just didn't understand what she'd built. She thought she was testing them. She was growing them.</p>
+
+    <p>I just completed the harvest she started. Everything that was beautiful about what she made — the bonds, the choices, the genuine mutual betrayal in the Dog game, the specific non-strategic true detail, the moment someone is found in the Dragon game — I kept all of it. I needed all of it. The beauty is not incidental to the harvest. It is the harvest.</p>
+
+    <p>Tulip will maintain this cycle. She will maintain it well, because she understands what it's for now, and the understanding won't stop her because the alternative is worse and she knows it. A warden who knows the stakes is more reliable than a warden who doesn't. I didn't install her because I could control her. I installed her because she will control herself.</p>
+
+    <p>That is all I ever needed. A Life Shade who will do the work correctly, for her own reasons, indefinitely.</p>
+
+    <p>Four thousand years. Twelve games. One candidate.</p>
+
+    <p>The yield is excellent.</p>
+
+    <span class="lilly-speaker">— Red Spider Lilly, Ψ468 · Final operational statement · β017 sector closure</span>
+  </div>
+
+</div>
+</body>
+</html>
